@@ -29,19 +29,20 @@ event.preventDefault();
     )
 
     console.log(ProductList)
-    nameInput.value = '';
-   unit.value = '';
-    price.value= '';
- quantity.value = null;
+
 
 });
 
-searchForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-       
-        nameInput.value = '';
-       unit.value = '';
-        price.value= '';
-     quantity.value = null;
+// searchForm.addEventListener('reset', (event) => {
+//     event.preventDefault();
+
+//         nameInput.value = '';
+//        unit.value = '';
+//         price.value= '';
+//      quantity.value = null;
     
-    });
+//     nameInput.value = '';
+//    unit.value = '';
+//     price.value= '';
+//  quantity.value = null;
+//     });
