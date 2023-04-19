@@ -134,7 +134,7 @@ searchForm.addEventListener('reset', () => {
 
 
 
-
+// sort 
 
 const Namee = document.getElementById('Namee');
 let sortt = false;
@@ -145,8 +145,21 @@ let productList = getProductList();
 Namee.addEventListener('click', (event) => {
     const column = event.target;
 //Sort by name ...........................
+
     if(column.textContent == 'Name'){
+        console.log("\n")
+        console.log(isSortedByAttribute(productList, "name") + " kk " + sortt);
+        if(!isSortedByAttribute(productList, "name") && sortt == true ){
+            sortt = false;
+           
+        }
+        else if(isSortedByAttribute(productList, "name") && sortt == false){
+            sortt = true;
+        }
+      
+
 if(sortt){
+    console.log("lol1");
     productList = sortArrayOfObjects(productList, 'name', 'desc');
     createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
 sortt = false;
@@ -165,13 +178,18 @@ sortt = true;
     //sort by quantityyyyyyyyyyyyyyy..................................................
 
     if(column.textContent == 'Quantity'){
-        console.log("ahhahahah");
-// if(isSortedByAttribute(PRODUCT_LIST, "quantity") && sortt == true){
-//     sortt = false;
-  
-// }
 
-        if(!sortt){
+        console.log("\n")
+        console.log(isSortedByAttribute(productList, "quantity") + " kk " + sortt);
+if(!isSortedByAttribute(productList, "quantity") && sortt == true ){
+    sortt = false;
+   
+}
+else if(isSortedByAttribute(productList, "quantity") && sortt == false){
+    sortt = true;
+}
+
+        if(sortt){
             productList = sortArrayOfObjects(productList, 'quantity', 'desc');
             createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
         sortt = true;
@@ -190,6 +208,13 @@ sortt = true;
 
             if(column.textContent == 'Price'){
 
+                if(!isSortedByAttribute(productList, "price") && sortt == true ){
+                    sortt = false;
+                   
+                }
+                else if(isSortedByAttribute(productList, "price") && sortt == false){
+                    sortt = true;
+                }
 
                 if(sortt){
                     productList = sortArrayOfObjects(productList, 'price', 'desc');
@@ -240,3 +265,26 @@ sortt = true;
       return result * sortOrder;
     });
   }
+
+
+
+  const searchInput=document.getElementById('search');
+  searchInput.addEventListener('keyup',({target})=>
+{
+    console.log("lol")
+    let productList=getProductList();
+    //object distructing
+    const {value}=target;
+
+    productList = productList.filter((product)=>
+    {
+        return product.name.toLowerCase().includes(value.toLowerCase());
+    });
+
+    createTable(
+        tableBody,
+        productList,
+        ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']
+    );
+    
+});
