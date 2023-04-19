@@ -140,20 +140,11 @@ const Namee = document.getElementById('Namee');
 let sortt = false;
 let temp1 = "lol";
 
+let productList = getProductList();
 
 Namee.addEventListener('click', (event) => {
     const column = event.target;
-    // console.log('Clicked column:', column.textContent);
-
-    let productList = getProductList();
-
-    let temp2 = temp1;
- temp1 = column.textContent;
-
-
-
-
-
+//Sort by name ...........................
     if(column.textContent == 'Name'){
 if(sortt){
     productList = sortArrayOfObjects(productList, 'name', 'desc');
@@ -169,7 +160,17 @@ sortt = true;
    
     }
 
+
+
+    //sort by quantityyyyyyyyyyyyyyy..................................................
+
     if(column.textContent == 'Quantity'){
+        console.log("ahhahahah");
+// if(isSortedByAttribute(PRODUCT_LIST, "quantity") && sortt == true){
+//     sortt = false;
+  
+// }
+
         if(!sortt){
             productList = sortArrayOfObjects(productList, 'quantity', 'desc');
             createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
@@ -184,7 +185,12 @@ sortt = true;
            
             }
 
+
+            // sort by priceeeeeeeeeeee............................................. 
+
             if(column.textContent == 'Price'){
+
+
                 if(sortt){
                     productList = sortArrayOfObjects(productList, 'price', 'desc');
                     createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
@@ -204,6 +210,15 @@ sortt = true;
 
   });
 
+
+  function isSortedByAttribute(arr, attributeName) {
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i][attributeName] < arr[i-1][attributeName]) {
+        return false;
+      }
+    }
+    return true;
+  }
 
 
 
