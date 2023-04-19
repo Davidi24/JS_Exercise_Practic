@@ -137,8 +137,7 @@ searchForm.addEventListener('reset', () => {
 // sort 
 
 const Namee = document.getElementById('Namee');
-let sortt = false;
-let temp1 = "lol";
+
 
 let productList = getProductList();
 
@@ -147,18 +146,10 @@ Namee.addEventListener('click', (event) => {
 //Sort by name ...........................
 
     if(column.textContent == 'Name'){
-        console.log("\n")
-        console.log(isSortedByAttribute(productList, "name") + " kk " + sortt);
-        if(!isSortedByAttribute(productList, "name") && sortt == true ){
-            sortt = false;
-           
-        }
-        else if(isSortedByAttribute(productList, "name") && sortt == false){
-            sortt = true;
-        }
+
       
 
-if(sortt){
+if(isSortedByAttribute(productList, "name") ){
     console.log("lol1");
     productList = sortArrayOfObjects(productList, 'name', 'desc');
     createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
@@ -179,17 +170,9 @@ sortt = true;
 
     if(column.textContent == 'Quantity'){
 
-        console.log("\n")
-        console.log(isSortedByAttribute(productList, "quantity") + " kk " + sortt);
-if(!isSortedByAttribute(productList, "quantity") && sortt == true ){
-    sortt = false;
-   
-}
-else if(isSortedByAttribute(productList, "quantity") && sortt == false){
-    sortt = true;
-}
 
-        if(sortt){
+
+        if(isSortedByAttribute(productList, "quantity")){
             productList = sortArrayOfObjects(productList, 'quantity', 'desc');
             createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
         sortt = true;
@@ -208,15 +191,8 @@ else if(isSortedByAttribute(productList, "quantity") && sortt == false){
 
             if(column.textContent == 'Price'){
 
-                if(!isSortedByAttribute(productList, "price") && sortt == true ){
-                    sortt = false;
-                   
-                }
-                else if(isSortedByAttribute(productList, "price") && sortt == false){
-                    sortt = true;
-                }
 
-                if(sortt){
+                if(isSortedByAttribute(productList, "price")){
                     productList = sortArrayOfObjects(productList, 'price', 'desc');
                     createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
                 sortt = false;
