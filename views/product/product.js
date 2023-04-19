@@ -129,3 +129,99 @@ searchForm.addEventListener('reset', () => {
 
     calculateTotalQuantityAndPriceData(getProductList());
 });
+
+
+
+
+
+
+
+const Namee = document.getElementById('Namee');
+let sortt = false;
+let temp1 = "lol";
+
+
+Namee.addEventListener('click', (event) => {
+    const column = event.target;
+    // console.log('Clicked column:', column.textContent);
+
+    let productList = getProductList();
+
+    let temp2 = temp1;
+ temp1 = column.textContent;
+
+
+
+
+
+    if(column.textContent == 'Name'){
+if(sortt){
+    productList = sortArrayOfObjects(productList, 'name', 'desc');
+    createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+sortt = false;
+}
+else{
+    productList = sortArrayOfObjects(productList, 'name', 'asc');
+    createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+sortt = true;
+}
+          
+   
+    }
+
+    if(column.textContent == 'Quantity'){
+        if(!sortt){
+            productList = sortArrayOfObjects(productList, 'quantity', 'desc');
+            createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+        sortt = true;
+        }
+        else{
+            productList = sortArrayOfObjects(productList, 'quantity', 'asc');
+            createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+        sortt = false;
+        }
+                  
+           
+            }
+
+            if(column.textContent == 'Price'){
+                if(sortt){
+                    productList = sortArrayOfObjects(productList, 'price', 'desc');
+                    createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+                sortt = false;
+                }
+                else{
+                    productList = sortArrayOfObjects(productList, 'price', 'asc');
+                    createTable(tableBody,productList, ['id', 'name', 'price', 'unit', 'quantity', 'totalPrice']);
+                sortt = true;
+                }
+                          
+                   
+                    }
+
+
+
+
+  });
+
+
+
+
+
+  function sortArrayOfObjects(array, property, order) {
+    const sortOrder = order === 'asc' ? 1 : -1;
+  
+    return array.sort((a, b) => {
+      const valueA = a[property];
+      const valueB = b[property];
+  
+      let result = 0;
+      if (valueA < valueB) {
+        result = -1;
+      } else if (valueA > valueB) {
+        result = 1;
+      }
+  
+      return result * sortOrder;
+    });
+  }
